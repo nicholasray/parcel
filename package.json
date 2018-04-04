@@ -1,0 +1,29 @@
+{
+  "name": "parcel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "server:dev": "nodemon -r dotenv/config src/server.js",
+    "test": "mocha $(find src -name '*Test.js')",
+    "test:watch": "npm test -- --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.220.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "nodemailer": "^4.6.4",
+    "validator": "^9.4.1",
+    "winston": "^2.4.1",
+    "winston-rollbar2": "^2.1.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "dotenv": "^5.0.1",
+    "mocha": "^5.0.5"
+  }
+}
