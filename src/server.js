@@ -17,14 +17,20 @@ app.get('/health', (req, res) => {
 
 app.post('/messages', bodyParser.json(), async (req, res) => {
   try {
-    if (!(req.hostname in clients)) {
+    logger.info(`Received request from ${req.headers.origin} with data '${JSON.stringify(req.body)}'`);
+
+    if (!(req.headers.origin in clients)) {
+      logger.info(`${req.headers.origin} is not in [${Object.keys(clients)}]`);
+
       return res.status(400).json({
-        errors: ["Host is not an approved client"]
+        errors: [`${req.headers.origin} is not an approved client`]
       });
     }
 
     let errors = Validator.validate(req.body);
-    if (errros.length > 0) {
+    if (errors.length > 0) {
+      logger.info(`Request failed validation with errors '${errors}'`);
+
       return res.status(400).json({
         errors
       });
