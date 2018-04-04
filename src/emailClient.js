@@ -1,5 +1,5 @@
-let nodemailer = require('nodemailer');
-let aws = require('aws-sdk');
+const nodemailer = require('nodemailer');
+const aws = require('aws-sdk');
 
 class EmailClient {
   constructor(opts = {}) {
