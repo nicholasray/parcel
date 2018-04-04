@@ -7,5 +7,6 @@ src/webpack-assets.json
 manifest.*.json
 .env
 .env.*
+!.env.example
 bin
 backend/dist
