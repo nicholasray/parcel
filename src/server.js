@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const Validator = require('./validator');
-const emailClient = require('./emailClient')
+const EmailClient = require('./emailClient')
 const logger = require('./logger');
 const clients = require('./clients');
 
@@ -36,7 +36,8 @@ app.post('/messages', bodyParser.json(), async (req, res) => {
       });
     }
 
-    await emailClient.send(Object.assign(req.body, clients[req.hostname]));
+    let emailClient = new EmailClient();
+    await emailClient.send(Object.assign(req.body, clients[req.headers.origin]));
     res.sendStatus(200);
   } catch (e) {
     logger.error(e);
