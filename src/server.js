@@ -11,6 +11,10 @@ app.use(cors({
   origin: Object.keys(clients)
 }));
 
+app.get('/health', (req, res) => {
+  res.sendStatus(200);
+});
+
 app.post('/messages', bodyParser.json(), async (req, res) => {
   try {
     if (!(req.hostname in clients)) {
@@ -35,7 +39,7 @@ app.post('/messages', bodyParser.json(), async (req, res) => {
       errors: ["Well this is embarassing. Something went wrong with that request. We have been notified and will be on it right away!"]
     });
   }
-})
+});
 
 app.set('port', (process.env.PORT || 3000));
 app.set('trust proxy', true) ;
