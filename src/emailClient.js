@@ -11,7 +11,6 @@ class EmailClient {
   }
 
   send(data) {
-    // send some mail
     return this.transporter.sendMail({
         replyTo: {
           name: data.name,
