@@ -115,6 +115,16 @@ describe("Validator", () => {
         expect(errors[0]).to.eq("Message cannot exceed 1000 characters");
       })
     })
+
+    context("when fields are valid", () => {
+      it("returns no errors", () => {
+        // when
+        let errors = subject.validate(validData);
+
+        // expect
+        expect(errors).to.be.empty;
+      })
+    })
   });
 
 
